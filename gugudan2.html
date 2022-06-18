@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99dan</title>
+</head>
+<body>
+    <h1>구구단 전체 출력</h1>
+    <script>
+        var results = []
+        for (var n=2; n<10; n++){
+            for(var i=1; i<10; i++){
+                results[i-1] = n*i;
+            }
+            document.write("<h2>" + n + "단</h2>");
+            for (var i=1; i<10; i++)
+            document.write(n + "x" + i + "=" + results[i-1] + "<br>");
+        }
+    </script>
+</body>
+</html>
