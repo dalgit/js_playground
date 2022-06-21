@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>문자열 계산기 구현하기</h1>
+    <div id="output"></div>
+    <script>
+        var sum= Number(prompt("첫 숫자를 입력하세요 "));
+        var out = document.getElementById('output');
+        var op, str
+
+        while(true){
+            op= prompt("연산기호를 입력하세요 (끝:q)");
+            if (op === "q"){
+                break;
+            }
+            str= Number(prompt("숫자를 입력하세요"));
+            sum = cal(sum,op,str);
+        }
+        function cal(n1,op,n2){
+            switch(op){
+                case "+":
+                    res =n1+n2;
+                    break;
+                case "-":
+                    res =n1-n2;
+                    break;
+                case "*":
+                    res =n1*n2;
+                    break;
+                case "/":
+                    res =n1/n2;
+                    break;
+                default:
+                    res ="잘못입력하셨습니다";
+            }
+            return res;
+        }
+        out.innerHTML = "최종결과값은 " + sum + " 입니다.";
+    </script>
+
+</body>
+</html>
