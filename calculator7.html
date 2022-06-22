@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>문자열 계산기</h1>
+    <h3>(사이에 띄어쓰기를 넣어주세요!)</h3>
+
+    <div>
+        연산을 입력해주세요. <input type="text" id="cal">
+        <button onclick="calc()">실행</button>
+    </div>
+    
+    <div id="output"></div>
+
+    <script>
+        function calc() {
+            var cal = document.getElementById('cal').value;
+            var str = cal.split(" ");
+            // 1,+,2,+,4,-,1
+
+            var out = document.getElementById('output');
+
+            var ret = Number(str.shift());
+            var op;
+            var second;
+
+            while (true) {
+                op = str.shift();
+                second = Number(str.shift());
+
+                switch (op) {
+                    case "+":
+                        ret = ret + second;
+                        break;
+                    case "-":
+                        ret = ret - second;
+                        break;
+                    case "*":
+                        ret = ret * second;
+                        break;
+                    case "/":
+                        ret = ret / second;
+                        break;
+                    default:
+                        alert("올바른 연사자를 입력하세요.");
+                        ret = "잘못 입력하셨습니다.";
+                        break;
+                }
+
+                if (str.length === 0){
+                    break;
+                }
+            }
+            out.innerHTML = ret;
+        }
+    </script>
+
+</body>
+
+</html>
