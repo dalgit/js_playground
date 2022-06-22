@@ -88,8 +88,13 @@ var clickNumbers = function (event) {
 
     if (str === 'BS'){
         input.array.pop();
-    } else if (str === '+' || str === '-' || str === '*' || str === '/'){
-        input.array.push(' ' + str + ' ');
+
+    } else if ((str === '+' || str === '-' || str === '*' || str === '/')){
+        if(isNaN(Number(input.array.at(-1)))){
+            return;
+        } else {
+            input.array.push(' ' + str + ' ');
+        }
     } else {
         input.array.push(str);
     }
