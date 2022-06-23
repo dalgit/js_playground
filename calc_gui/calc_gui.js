@@ -106,11 +106,36 @@ var clickNumbers = function (event) {
     }
 }
 
+
+input.priority = function () {
+    while(this.array.some(i => ['*', '/'].includes(i))){
+        var what;
+        if(this.array.indexOf('/') == -1){
+            what = '*'
+        } else if (this.array.indexOf('*') == -1){
+            what = '/'
+        } else if (this.array.indexOf('/') < this.array.indexOf('*')){
+            what = '/'
+        } else {
+            what = '*'
+        }
+
+        var pri_index = this.array.indexOf(what);
+        var pri_second = this.array.splice(pri_index+1,1).join();
+        var pri_op= this.array.splice(pri_index,1).join();
+        var pri_first = this.array.splice(pri_index-1,1).join();
+        var pri_result = calculator.calculate(pri_first, pri_second, pri_op);
+        this.array.splice(pri_index-1,0,pri_result);
+    }
+};
+
 // '=' 버튼의 핸들러 함수
 var showResult = function (event) {
     input.prepareCalculate();
+    input.priority();
 
     var result = input.getValue();
+
     while (!input.isEmpty()) {
         var op = input.getOperator();
         var second = input.getValue();
